@@ -7,27 +7,68 @@
 <meta name="description" content="Car insurance for Texas drivers and families. Liability, collision, comprehensive and more. Get a free auto quote.">
 <meta property="og:title" content="Auto Insurance in [CITY], TX | N&amp;D Insurance">
 <meta property="og:description" content="Car insurance for Texas drivers and families. Liability, collision, comprehensive and more. Get a free auto quote.">
-<meta property="og:image" content="logo-dark.png">
+<meta property="og:image" content="favicon.png">
 <meta name="theme-color" content="#0B1F35">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<script src="main.js" defer></script>
+<style>
+body{margin:0;background:#F6F1E8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+a{color:#0B1F35}a:hover{color:#8A6440}
+input,select,button,textarea{font:inherit}
+input::placeholder,textarea::placeholder{color:#8C97A3}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+[hidden]{display:none !important}
+.chip{display:block;min-height:52px;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;padding:0 14px;text-align:left;border:1.5px solid #2C4A6B;background:transparent;color:#F6F1E8;transition:background-color .2s ease,border-color .2s ease}
+.chip[aria-pressed="true"]{border-color:#DDBF96;background:#DDBF96;color:#0B1F35}
+.chip[aria-pressed="true"]::before{content:"\2713\00a0\00a0"}
+/* Fallback scroll reveal for browsers without scroll-driven animations (added by main.js) */
+.js-reveal .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js-reveal .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.js-reveal .reveal{opacity:1;transform:none;transition:none}}
+
+@keyframes nd-rise{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes nd-kb{from{transform:scale(1)}to{transform:scale(1.1)}}
+@keyframes nd-word{from{opacity:0;transform:translateY(0.45em)}to{opacity:1;transform:none}}
+@keyframes nd-fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes nd-shine{0%{left:-60%}22%,100%{left:140%}}
+.kb{animation:nd-kb 22s ease-in-out infinite alternate}
+.w{display:inline-block;opacity:0;animation:nd-word .9s cubic-bezier(.2,.7,.2,1) forwards}
+.fade-in{opacity:0;animation:nd-fade .9s cubic-bezier(.2,.7,.2,1) forwards}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.6),rgba(255,255,255,0));transform:skewX(-20deg);animation:nd-shine 5s ease-in-out 1.5s infinite;pointer-events:none}
+.lift{transition:transform .35s ease,box-shadow .35s ease}
+.lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(11,31,53,.14)}
+.ph{transition:transform .9s ease}
+.lift:hover .ph{transform:scale(1.06)}
+.btn{transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.navlink{position:relative}
+.navlink::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#B08D66;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.navlink:hover::after,.navlink.on::after{transform:scaleX(1)}
+@supports (animation-timeline: view()){.reveal{animation:nd-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
+@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal{animation:none !important;opacity:1 !important;transform:none !important}}
+
+@media (max-width: 720px){header{position:static !important}}
+</style>
 </head>
 <body>
 <div style="width: 100%; font-family: 'DM Sans', system-ui, sans-serif; color: #0B1F35; background: #F6F1E8; font-size: 16px; line-height: 1.6">
 <div style="background: #0B1F35; color: #D9CDB8; font-size: 13.5px">
 <div style="max-width: 1240px; margin: 0 auto; padding: 9px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px">
-<span>Licensed in Texas · Serving [CITY] &amp; North Texas</span>
-<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Speaks [LANGUAGES]</span><a href="tel:[PHONE]" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call [PHONE]</a></span>
+<span>Licensed in Texas · Serving Allen &amp; North Texas</span>
+<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Speaks English &amp; Arabic</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
 </div>
 </div>
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 232, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4DACB">
 <nav style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
-<a href="index.html" aria-label="N&amp;D Insurance home" style="display: flex; align-items: center"><img src="logo-dark.png" alt="N&amp;D Insurance" style="height: 54px; width: auto; display: block"></a>
+<a href="index.html" aria-label="N&amp;D Insurance home" style="display: flex; align-items: center"><img src="logo-dark.svg" alt="N&amp;D Insurance" style="height: 66px; width: auto; display: block"></a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; font-size: 15px">
 <a href="auto.html" class="navlink on" aria-current="page" style="text-decoration: none; color: #0B1F35; font-weight: 600">Auto</a>
 <a href="homeowners.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Homeowners</a>
@@ -40,7 +81,7 @@
 </nav>
 </header>
 <section style="position: relative; background: #2B3A4A; overflow: hidden">
-<div role="img" aria-label="Page photo placeholder" class="kb" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(135deg, #8E8273 0%, #B7A68C 45%, #6F6558 100%); display: flex; align-items: flex-end; justify-content: flex-end; padding: 26px"><span style="background: rgba(246, 241, 232, 0.92); color: #0B1F35; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px">[PHOTO: a family car on an open Texas highway at sunset, wide]</span></div>
+<div aria-hidden="true" class="kb" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: radial-gradient(ellipse at 82% 30%, rgba(221, 191, 150, 0.30), rgba(221, 191, 150, 0) 50%), radial-gradient(ellipse at 10% 100%, rgba(27, 63, 99, 0.9), rgba(27, 63, 99, 0) 60%), linear-gradient(135deg, #0B1F35 0%, #13304F 55%, #0B1F35 100%); display: flex; align-items: center; justify-content: center; padding: 26px"><img src="logo-light.svg" alt="" style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 36%; max-width: 560px; opacity: 0.08"></div>
 <div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(90deg, rgba(7, 21, 38, 0.94) 0%, rgba(11, 31, 53, 0.8) 48%, rgba(11, 31, 53, 0.25) 100%)"></div>
 <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px 110px; min-height: 560px; display: flex; flex-direction: column; justify-content: center; gap: 24px">
 <p class="fade-in" style="margin: 0; font-size: 14px; color: #C9D2DD"><a href="index.html" style="color: #C9D2DD">Home</a> <span aria-hidden="true" style="color: #DDBF96; padding: 0 6px">/</span> Auto</p>
@@ -49,7 +90,7 @@
 <p class="fade-in" style="margin: 0; font-size: 19px; line-height: 1.65; color: #D5DCE5; max-width: 600px; animation-delay: .6s">From daily commutes on 75 to a teen's first car, we build auto coverage around how your family actually drives, and make sure you understand it.</p>
 <div class="fade-in" style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px; animation-delay: .8s">
 <a href="quote.html" class="shine btn" style="text-decoration: none; background: linear-gradient(135deg, #E3C9A2 0%, #B08D66 50%, #8A6440 100%); color: #0B1F35; font-weight: 700; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25)">Get my free quote <span aria-hidden="true">→</span></a>
-<a href="tel:[PHONE]" class="btn" style="text-decoration: none; border: 1.5px solid #F6F1E8; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg> Talk to an agent</a>
+<a href="tel:+19725550147" class="btn" style="text-decoration: none; border: 1.5px solid #F6F1E8; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg> Talk to an agent</a>
 </div>
 </div>
 </section>
@@ -95,7 +136,7 @@
 </section>
 <section style="background: #F6F1E8">
 <div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-wrap: wrap; flex-direction: row; gap: 64px; align-items: center">
-<div style="flex: 1 1 440px; min-width: 0; border-radius: 22px; overflow: hidden" class="lift"><div role="img" aria-label="Photo placeholder" class="ph" style="aspect-ratio: 5 / 4; background: linear-gradient(160deg, #DCCFBA, #B7A68C); display: flex; align-items: flex-end; padding: 16px"><span style="background: rgba(246, 241, 232, 0.92); color: #0B1F35; font-size: 13px; font-weight: 600; padding: 7px 13px; border-radius: 999px">[PHOTO: a parent handing car keys to a teenager in a driveway]</span></div></div>
+<div style="flex: 1 1 440px; min-width: 0; border-radius: 22px; overflow: hidden" class="lift"><div aria-hidden="true" class="ph" style="aspect-ratio: 5 / 4; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; align-items: center; justify-content: center; padding: 16px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div></div>
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
 <p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Built around you</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Every driver is <span style="font-style: italic; color: #8A6440">different</span></h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">A single commuter, a family with a new teen driver and a rideshare driver all need something different. We'll go through your situation and show you options side by side.</p>
@@ -149,12 +190,12 @@
 </section>
 <section style="background: #0B1F35; color: #F6F1E8">
 <div class="reveal" style="max-width: 900px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px">
-<img src="logo-light.png" alt="" style="width: 200px; height: auto; display: block">
+<img src="logo-light.svg" alt="" style="width: 200px; height: auto; display: block">
 <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.08; letter-spacing: -1px">Ready to see what you <span style="font-style: italic; color: #DDBF96">could save?</span></h2>
 <p style="margin: 0; font-size: 18px; color: #C9D2DD; max-width: 560px">Get a free, no-obligation quote today. It only takes a minute to start.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
 <a href="quote.html" class="shine btn" style="text-decoration: none; background: linear-gradient(135deg, #E3C9A2 0%, #B08D66 50%, #8A6440 100%); color: #0B1F35; font-weight: 700; font-size: 17px; padding: 17px 32px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center">Get my free quote →</a>
-<a href="tel:[PHONE]" class="btn" style="text-decoration: none; border: 1.5px solid #5D7590; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 32px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center">Call [PHONE]</a>
+<a href="tel:+19725550147" class="btn" style="text-decoration: none; border: 1.5px solid #5D7590; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 32px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center">Call (972) 555-0147</a>
 </div>
 </div>
 </section>
@@ -162,23 +203,100 @@
 <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 40px; display: flex; flex-direction: column; gap: 36px">
 <div style="display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 18px; max-width: 320px">
-<img src="logo-light.png" alt="N&amp;D Insurance" style="width: 150px; height: auto; display: block">
+<img src="logo-light.svg" alt="N&amp;D Insurance" style="width: 150px; height: auto; display: block">
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9AA9BA">Personal insurance service from a local Texas agent.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 160px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Coverage</span><a href="auto.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Auto</a><a href="homeowners.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Homeowners</a><a href="life.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Life</a><a href="business.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Business</a></div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 160px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Agency</span><a href="about.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">About</a><a href="contact.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Contact</a><a href="quote.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Get a quote</a></div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 200px">
 <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Visit</span>
-<span style="font-size: 15px; color: #D9CDB8">[STREET ADDRESS]<br>[CITY], TX [ZIP]</span>
-<a href="tel:[PHONE]" style="color: #D9CDB8; text-decoration: none; font-size: 15px">[PHONE]</a>
-<span style="font-size: 15px; color: #D9CDB8">Mon–Fri [HOURS]</span>
+<span style="font-size: 15px; color: #D9CDB8">100 Main Street, Suite 200<br>Allen, TX 75013</span>
+<a href="tel:+19725550147" style="color: #D9CDB8; text-decoration: none; font-size: 15px">(972) 555-0147</a>
+<span style="font-size: 15px; color: #D9CDB8">Mon–Fri 9 AM – 6 PM</span>
 </div>
 </div>
 <div style="height: 1px; background: #1C3047"></div>
-<p style="margin: 0; font-size: 13px; line-height: 1.65; max-width: 920px">[REQUIRED CARRIER DISCLOSURE: the exact wording the carrier requires on agent marketing sites, such as licensing, which company underwrites the policies, and that coverage is subject to policy terms and availability.] Texas agent license #[LICENSE #].</p>
-<p style="margin: 0; font-size: 13px">© 2026 N&amp;D Insurance · [CITY], Texas</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.65; max-width: 920px">Insurance products are subject to availability and qualifications. Coverage is subject to the terms, conditions and exclusions of the policy issued. This website provides general information only and does not change any policy.</p>
+<p style="margin: 0; font-size: 13px">© 2026 N&amp;D Insurance · Allen, Texas</p>
 </div>
 </footer>
 </div>
+<script>
+// N&D Insurance website scripts
+
+// ---- Quote form ----
+// To receive quote requests by email, create a free form at https://formspree.io
+// and paste its URL below (example: "https://formspree.io/f/abcd1234").
+const QUOTE_ENDPOINT = "";
+
+document.querySelectorAll('[data-quote]').forEach(function (card) {
+  const steps = card.querySelectorAll('[data-step]');
+  const label = card.querySelector('[data-step-label]');
+  const bar = card.querySelector('[data-progress]');
+  const pickedOut = card.querySelector('[data-picked]');
+  const chips = card.querySelectorAll('.chip');
+  let step = 1;
+
+  function picked() {
+    return Array.prototype.filter.call(chips, function (c) { return c.getAttribute('aria-pressed') === 'true'; })
+      .map(function (c) { return c.dataset.opt; });
+  }
+  function show(n) {
+    step = n;
+    steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+    label.textContent = n === 3 ? 'Done' : 'Step ' + n + ' of 2';
+    bar.style.width = n === 1 ? '33%' : n === 2 ? '66%' : '100%';
+    const list = picked();
+    if (pickedOut) pickedOut.textContent = list.length ? list.join(', ') : 'General coverage';
+  }
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+  card.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const action = btn.dataset.action;
+    if (action === 'next' && step === 1) show(2);
+    else if (action === 'send') send();
+    else if (action === 'back') show(1);
+    else if (action === 'restart') {
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.opt === 'Auto' ? 'true' : 'false'); });
+      card.querySelectorAll('input').forEach(function (i) { i.value = ''; });
+      show(1);
+    }
+  });
+  function send() {
+    const form = card.querySelector('form') || card;
+    const required = form.querySelectorAll('[data-step="2"] input[required]');
+    for (let i = 0; i < required.length; i++) {
+      if (!required[i].reportValidity()) return;
+    }
+    const data = { coverage: picked().join(', ') };
+    card.querySelectorAll('input[name]').forEach(function (i) { data[i.name] = i.value; });
+    if (QUOTE_ENDPOINT) {
+      fetch(QUOTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+        .catch(function () {});
+    }
+    show(3);
+  }
+  show(1);
+});
+
+// ---- Scroll reveal fallback (Safari / Firefox) ----
+(function () {
+  const supported = window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (supported || reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-reveal');
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
