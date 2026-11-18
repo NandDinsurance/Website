@@ -52,8 +52,24 @@ details summary::-webkit-details-marker{display:none}
 .navlink{position:relative}
 .navlink::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#B08D66;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .navlink:hover::after,.navlink.on::after{transform:scaleX(1)}
+@keyframes nd-road{from{background-position:0 0}to{background-position:240px 0}}
+@keyframes nd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes nd-glow{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes nd-rain{from{background-position:0 0}to{background-position:-80px 320px}}
+.road{background-image:repeating-linear-gradient(115deg,rgba(221,191,150,0) 0 70px,rgba(221,191,150,.16) 70px 72px,rgba(221,191,150,0) 72px 120px);animation:nd-road 6s linear infinite}
+.float{animation:nd-float 6s ease-in-out infinite}
+.fade-in.float{animation:nd-fade .9s cubic-bezier(.2,.7,.2,1) forwards,nd-float 6s ease-in-out 1.2s infinite}
+.glow{animation:nd-glow 7s ease-in-out infinite}
+.rain{background-image:repeating-linear-gradient(105deg,rgba(221,191,150,0) 0 38px,rgba(221,191,150,.22) 38px 39px,rgba(221,191,150,0) 39px 80px);background-size:80px 320px;animation:nd-rain 2.4s linear infinite}
+.grid-bg{background-image:linear-gradient(rgba(221,191,150,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(221,191,150,.09) 1px,transparent 1px);background-size:56px 56px}
+.row-hover{transition:background-color .25s ease}
+.row-hover:hover{background-color:rgba(221,191,150,.08)}
+details.ind summary .ind-plus{transition:transform .3s ease}
+details.ind[open] summary .ind-plus{transform:rotate(45deg)}
+details.ind{transition:box-shadow .3s ease}
+details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 @supports (animation-timeline: view()){.reveal{animation:nd-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
-@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal{animation:none !important;opacity:1 !important;transform:none !important}}
+@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal,.road,.float,.glow,.rain{animation:none !important;opacity:1 !important;transform:none !important}}
 
 @media (max-width: 720px){header{position:static !important}}
 </style>
@@ -64,7 +80,7 @@ details summary::-webkit-details-marker{display:none}
 <div style="background: #0B1F35; color: #D9CDB8; font-size: 13.5px">
 <div style="max-width: 1240px; margin: 0 auto; padding: 9px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px">
 <span>Licensed in Texas · Serving Allen &amp; North Texas</span>
-<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Speaks English &amp; Arabic</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Mon–Fri 9 AM – 6 PM · Sat 10 AM – 2 PM</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
 </div>
 </div>
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 232, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4DACB">
@@ -187,7 +203,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-5l2-5h11l4 5h1a1 1 0 0 1 1 1v4h-2"></path><circle cx="7.5" cy="17.5" r="2"></circle><circle cx="16.5" cy="17.5" r="2"></circle><path d="M9.5 17.5h5"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-5l2-5h11l4 5h1a1 1 0 0 1 1 1v4h-2"></path><circle cx="7.5" cy="17.5" r="2"></circle><circle cx="16.5" cy="17.5" r="2"></circle><path d="M9.5 17.5h5"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Auto</h3>
 <p style="margin: 0; color: #3E4A57">Liability, collision, comprehensive and uninsured motorist coverage for daily commutes, teen drivers and family cars.</p>
 <a href="auto.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Explore auto coverage →</a>
@@ -198,7 +214,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 22% 78%, rgba(221, 191, 150, 0.32), rgba(221, 191, 150, 0) 55%), linear-gradient(160deg, #0B1F35 0%, #1B3F63 100%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Home</h3>
 <p style="margin: 0; color: #3E4A57">Protection for your house, belongings and liability, built with Texas hail, wind and storm season in mind.</p>
 <a href="homeowners.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Explore home coverage →</a>
@@ -209,7 +225,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 50% 0%, rgba(221, 191, 150, 0.30), rgba(221, 191, 150, 0) 60%), linear-gradient(180deg, #13304F 0%, #0B1F35 100%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"></circle><path d="m10.8 12.2 8.7-8.7"></path><path d="m17 6 2 2"></path><path d="m14.5 8.5 2 2"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"></circle><path d="m10.8 12.2 8.7-8.7"></path><path d="m17 6 2 2"></path><path d="m14.5 8.5 2 2"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Renters &amp; condo</h3>
 <p style="margin: 0; color: #3E4A57">Affordable coverage for your belongings and liability, whether you rent an apartment or own a condo.</p>
 <a href="quote.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Get a renters quote →</a>
@@ -220,7 +236,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Life</h3>
 <p style="margin: 0; color: #3E4A57">Term and permanent life insurance, so the people who depend on you are taken care of no matter what.</p>
 <a href="life.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Explore life insurance →</a>
@@ -231,7 +247,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 22% 78%, rgba(221, 191, 150, 0.32), rgba(221, 191, 150, 0) 55%), linear-gradient(160deg, #0B1F35 0%, #1B3F63 100%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Business</h3>
 <p style="margin: 0; color: #3E4A57">General liability, commercial property, business auto and workers' comp for restaurants, shops and contractors.</p>
 <a href="business.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Explore business coverage →</a>
@@ -242,7 +258,7 @@ Talk to an agent</a>
 <div aria-hidden="true" class="ph" style="aspect-ratio: 16 / 10; background: radial-gradient(circle at 50% 0%, rgba(221, 191, 150, 0.30), rgba(221, 191, 150, 0) 60%), linear-gradient(180deg, #13304F 0%, #0B1F35 100%); display: flex; align-items: center; justify-content: center; padding: 14px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div>
 <div style="padding: 30px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1">
 
-<span style="width: 56px; height: 56px; margin-top: -58px; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"></path><path d="M12 12v7a2 2 0 0 0 4 0"></path></svg></span>
+<span style="width: 56px; height: 56px; margin-top: -58px; position: relative; z-index: 2; border: 4px solid #ffffff; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"></path><path d="M12 12v7a2 2 0 0 0 4 0"></path></svg></span>
 <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600">Umbrella</h3>
 <p style="margin: 0; color: #3E4A57">Extra liability protection on top of your auto and home policies, for the claims that go beyond normal limits.</p>
 <a href="quote.html" style="margin-top: auto; padding-top: 8px; font-weight: 600; color: #8A6440; text-decoration: none">Get an umbrella quote →</a>
@@ -264,7 +280,7 @@ Talk to an agent</a>
 <div style="flex: 1.4 1 520px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 48px">
 <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px 0; border-top: 1px solid #24405F">
 <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 34px; line-height: 1; color: #DDBF96">01</span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Plain-English quotes</h3>
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Clear, honest quotes</h3>
 <p style="margin: 0; color: #C9D2DD">We walk through what each coverage does and what it costs, before you sign anything.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px; padding: 26px 0; border-top: 1px solid #24405F">
@@ -313,6 +329,29 @@ Talk to an agent</a>
 </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" style="background: #F6F1E8">
+<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-wrap: wrap; gap: 72px; align-items: center">
+<div style="flex: 1 1 340px; min-width: 0; max-width: 460px; position: relative; padding: 0 22px 22px 0">
+<div aria-hidden="true" style="position: absolute; top: 22px; left: 22px; right: 0; bottom: 0; border: 1.5px solid #B08D66; border-radius: 20px"></div>
+<div aria-hidden="true" style="position: relative; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px"><svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#DDBF96" stroke-opacity="0.75" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><img src="logo-light.svg" alt="" style="width: 46%; opacity: 0.22"></div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Meet your agent</p>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px">David Nader <span style="font-style: italic; color: #8A6440">Aboudkhil</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">Nader opened N&amp;D Insurance to give North Texas families and business owners something that's getting harder to find: an agent who actually knows them. He takes the time to understand your life, your home and your business before recommending anything.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">Every client gets a direct line to the office, a yearly coverage review, and real help when it's time to file a claim.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px">
+<span style="border: 1px solid #D8C9B2; border-radius: 999px; padding: 8px 18px; font-size: 14px; color: #24364A; background: #FBF8F3">Licensed Texas agent</span>
+<span style="border: 1px solid #D8C9B2; border-radius: 999px; padding: 8px 18px; font-size: 14px; color: #24364A; background: #FBF8F3">Serving Allen &amp; North Texas</span>
+</div>
+<p style="margin: 8px 0 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: #0B1F35">Nader</p>
+<p style="margin: -14px 0 0; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: #8A6440; font-weight: 600">Agency owner</p>
+<a href="about.html" style="font-weight: 600; color: #8A6440; text-decoration: none">More about N&amp;D →</a>
+</div>
+</div>
+</section>
+
 <!-- PROMISE -->
 <section style="background: #FBF8F3">
 <div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-direction: column; gap: 52px">
@@ -324,7 +363,7 @@ Talk to an agent</a>
 <p style="margin: 0; color: #3E4A57; font-size: 17px">Call the office and you'll talk to someone who knows your name and your policies, not a phone tree.</p>
 </div><div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 22px; padding: 38px 34px; display: flex; flex-direction: column; gap: 16px">
 <span style="width: 60px; height: 60px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 600">Everything in plain English</h3>
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 600">No fine-print surprises</h3>
 <p style="margin: 0; color: #3E4A57; font-size: 17px">We explain what you're buying, what it costs, and what isn't covered, before you sign anything.</p>
 </div><div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 22px; padding: 38px 34px; display: flex; flex-direction: column; gap: 16px">
 <span style="width: 60px; height: 60px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>

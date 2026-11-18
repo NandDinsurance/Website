@@ -52,8 +52,24 @@ details summary::-webkit-details-marker{display:none}
 .navlink{position:relative}
 .navlink::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#B08D66;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .navlink:hover::after,.navlink.on::after{transform:scaleX(1)}
+@keyframes nd-road{from{background-position:0 0}to{background-position:240px 0}}
+@keyframes nd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes nd-glow{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes nd-rain{from{background-position:0 0}to{background-position:-80px 320px}}
+.road{background-image:repeating-linear-gradient(115deg,rgba(221,191,150,0) 0 70px,rgba(221,191,150,.16) 70px 72px,rgba(221,191,150,0) 72px 120px);animation:nd-road 6s linear infinite}
+.float{animation:nd-float 6s ease-in-out infinite}
+.fade-in.float{animation:nd-fade .9s cubic-bezier(.2,.7,.2,1) forwards,nd-float 6s ease-in-out 1.2s infinite}
+.glow{animation:nd-glow 7s ease-in-out infinite}
+.rain{background-image:repeating-linear-gradient(105deg,rgba(221,191,150,0) 0 38px,rgba(221,191,150,.22) 38px 39px,rgba(221,191,150,0) 39px 80px);background-size:80px 320px;animation:nd-rain 2.4s linear infinite}
+.grid-bg{background-image:linear-gradient(rgba(221,191,150,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(221,191,150,.09) 1px,transparent 1px);background-size:56px 56px}
+.row-hover{transition:background-color .25s ease}
+.row-hover:hover{background-color:rgba(221,191,150,.08)}
+details.ind summary .ind-plus{transition:transform .3s ease}
+details.ind[open] summary .ind-plus{transform:rotate(45deg)}
+details.ind{transition:box-shadow .3s ease}
+details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 @supports (animation-timeline: view()){.reveal{animation:nd-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
-@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal{animation:none !important;opacity:1 !important;transform:none !important}}
+@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal,.road,.float,.glow,.rain{animation:none !important;opacity:1 !important;transform:none !important}}
 
 @media (max-width: 720px){header{position:static !important}}
 </style>
@@ -63,7 +79,7 @@ details summary::-webkit-details-marker{display:none}
 <div style="background: #0B1F35; color: #D9CDB8; font-size: 13.5px">
 <div style="max-width: 1240px; margin: 0 auto; padding: 9px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px">
 <span>Licensed in Texas · Serving Allen &amp; North Texas</span>
-<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Speaks English &amp; Arabic</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Mon–Fri 9 AM – 6 PM · Sat 10 AM – 2 PM</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
 </div>
 </div>
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 232, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4DACB">
@@ -80,111 +96,99 @@ details summary::-webkit-details-marker{display:none}
 </div>
 </nav>
 </header>
-<section style="position: relative; background: #2B3A4A; overflow: hidden">
-<div aria-hidden="true" class="kb" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: radial-gradient(ellipse at 82% 30%, rgba(221, 191, 150, 0.30), rgba(221, 191, 150, 0) 50%), radial-gradient(ellipse at 10% 100%, rgba(27, 63, 99, 0.9), rgba(27, 63, 99, 0) 60%), linear-gradient(135deg, #0B1F35 0%, #13304F 55%, #0B1F35 100%); display: flex; align-items: center; justify-content: center; padding: 26px"><img src="logo-light.svg" alt="" style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 36%; max-width: 560px; opacity: 0.08"></div>
-<div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(90deg, rgba(7, 21, 38, 0.94) 0%, rgba(11, 31, 53, 0.8) 48%, rgba(11, 31, 53, 0.25) 100%)"></div>
-<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px 110px; min-height: 560px; display: flex; flex-direction: column; justify-content: center; gap: 24px">
-<p class="fade-in" style="margin: 0; font-size: 14px; color: #C9D2DD"><a href="index.html" style="color: #C9D2DD">Home</a> <span aria-hidden="true" style="color: #DDBF96; padding: 0 6px">/</span> Homeowners</p>
-<p class="fade-in" style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #DDBF96; animation-delay: .1s">Home insurance in Texas</p>
-<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(42px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -1.4px; color: #F6F1E8; max-width: 780px"><span class="w" style="animation-delay: 0.15s">Protect</span> <span class="w" style="animation-delay: 0.24s">the</span> <span class="w" style="animation-delay: 0.33s">place</span> <span class="w" style="animation-delay: 0.42s">you</span> <span class="w" style="animation-delay: 0.51s">call</span> <span class="w" style="animation-delay: 0.60s; font-style: italic; color: #DDBF96">home.</span></h1>
-<p class="fade-in" style="margin: 0; font-size: 19px; line-height: 1.65; color: #D5DCE5; max-width: 600px; animation-delay: .6s">Texas weather is tough on houses. We'll help you build coverage for your home, your belongings and your family, with Texas hail and storm season in mind.</p>
-<div class="fade-in" style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px; animation-delay: .8s">
-<a href="quote.html" class="shine btn" style="text-decoration: none; background: linear-gradient(135deg, #E3C9A2 0%, #B08D66 50%, #8A6440 100%); color: #0B1F35; font-weight: 700; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25)">Get my free quote <span aria-hidden="true">→</span></a>
-<a href="tel:+19725550147" class="btn" style="text-decoration: none; border: 1.5px solid #F6F1E8; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg> Talk to an agent</a>
+<section style="background: #F6F1E8; overflow: hidden">
+<div style="max-width: 1240px; margin: 0 auto; padding: 80px 24px 0; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-end">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px; padding-bottom: 100px">
+<p class="fade-in" style="margin: 0; font-size: 14px; color: #3E4A57"><a href="index.html" style="color: #3E4A57">Home</a> <span aria-hidden="true" style="color: #8A6440; padding: 0 6px">/</span> Homeowners</p>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Home insurance in Texas</p>
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(44px, 5.6vw, 78px); line-height: 1.03; letter-spacing: -1.4px; color: #0B1F35"><span class="w" style="animation-delay: 0.15s">Protect</span> <span class="w" style="animation-delay: 0.24s">the</span> <span class="w" style="animation-delay: 0.33s">place</span> <span class="w" style="animation-delay: 0.42s">you</span> <span class="w" style="animation-delay: 0.51s">call</span> <span class="w" style="animation-delay: 0.60s; font-style: italic; color: #8A6440">home.</span></h1>
+<p class="fade-in" style="margin: 0; font-size: 19px; line-height: 1.65; color: #3E4A57; max-width: 520px; animation-delay: .6s">Texas weather is tough on houses. We'll help you protect your home, your belongings and your family, with hail and storm season in mind.</p>
+<div class="fade-in" style="display: flex; flex-wrap: wrap; gap: 14px; animation-delay: .8s"><a href="quote.html" class="shine btn" style="text-decoration: none; background: linear-gradient(135deg, #E3C9A2 0%, #B08D66 50%, #8A6440 100%); color: #0B1F35; font-weight: 700; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2)">Get my home quote <span aria-hidden="true">→</span></a><a href="tel:+19725550147" class="btn" style="text-decoration: none; border: 1.5px solid #0B1F35; color: #0B1F35; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg> Talk to an agent</a></div>
+</div>
+<div class="fade-in" style="flex: 1 1 440px; min-width: 0; position: relative; animation-delay: .3s">
+<div aria-hidden="true" class="kb-wrap" style="height: 600px; border-radius: 320px 320px 0 0; overflow: hidden; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; align-items: center; justify-content: center">
+<span style="color: rgba(221, 191, 150, 0.55)"><svg aria-hidden="true" width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
+</div>
+<div class="float" style="position: absolute; left: -28px; bottom: 60px; background: #ffffff; border-radius: 18px; padding: 18px 22px; box-shadow: 0 20px 50px rgba(11, 31, 53, 0.18); display: flex; gap: 14px; align-items: center; max-width: 290px">
+<span style="flex: none; width: 46px; height: 46px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+<span style="display: flex; flex-direction: column"><strong style="font-family: 'Playfair Display', serif; font-size: 18px">Storm-season ready</strong><span style="font-size: 14px; color: #3E4A57">Hail &amp; wind coverage explained up front</span></span>
+</div>
 </div>
 </div>
 </section>
-<section style="background: #FBF8F3">
-<div style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-direction: column; gap: 52px">
-<div class="reveal" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">What's covered</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Home coverage, <span style="font-style: italic; color: #8A6440">explained simply</span></h2></div>
-<p style="margin: 0; font-size: 17px; color: #3E4A57; max-width: 440px">A homeowners policy protects more than the walls. Here's what each part does.</p>
+<section style="background: #ffffff">
+<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-direction: column; gap: 52px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 620px"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Inside your policy</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Six layers of <span style="font-style: italic; color: #8A6440">protection</span></h2></div>
+<p style="margin: 0; font-size: 17px; color: #3E4A57; max-width: 420px">A homeowners policy protects much more than the walls. Here's what each part does for you.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px">
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Dwelling</h3>
-<p style="margin: 0; color: #3E4A57">Repairs or rebuilds the structure of your house after a covered loss like fire, wind or hail.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); border-top: 1px solid #ECE3D5; border-left: 1px solid #ECE3D5; border-radius: 4px"><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Dwelling</h3><p style="margin: 0; color: #3E4A57">Rebuilds the structure of your house after a covered loss like fire, wind or hail.</p></div>
+</div><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.8-.7-.7-2.8z"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Other structures</h3><p style="margin: 0; color: #3E4A57">Your fence, detached garage, shed and other buildings on the property.</p></div>
+</div><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"></circle><path d="m10.8 12.2 8.7-8.7"></path><path d="m17 6 2 2"></path><path d="m14.5 8.5 2 2"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Personal property</h3><p style="margin: 0; color: #3E4A57">Furniture, electronics, clothes and other belongings if damaged or stolen.</p></div>
+</div><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Personal liability</h3><p style="margin: 0; color: #3E4A57">Protects you if someone is hurt on your property or you damage theirs.</p></div>
+</div><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18V6"></path><path d="M2 12h20v6"></path><path d="M6 12V9h6v3"></path><path d="M22 18v-4a2 2 0 0 0-2-2"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Loss of use</h3><p style="margin: 0; color: #3E4A57">Hotel and extra living costs if you can't stay home during repairs.</p></div>
+</div><div style="display: flex; gap: 18px; padding: 30px; border-right: 1px solid #ECE3D5; border-bottom: 1px solid #ECE3D5">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path><rect x="3" y="3" width="18" height="18" rx="3"></rect></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Medical payments</h3><p style="margin: 0; color: #3E4A57">Small medical bills for guests injured at your home, regardless of fault.</p></div>
+</div></div>
 </div>
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.8-.7-.7-2.8z"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Other structures</h3>
-<p style="margin: 0; color: #3E4A57">Covers your fence, detached garage, shed and other buildings on your property.</p>
+</section>
+<section style="background: #0B1F35; color: #F6F1E8; position: relative; overflow: hidden">
+<div aria-hidden="true" class="rain" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.35"></div>
+<div class="reveal" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #DDBF96">Storm season</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #F6F1E8">Ready for <span style="font-style: italic; color: #DDBF96">Texas weather</span></h2>
+<p style="margin: 0; font-size: 18px; color: #C9D2DD">Hail and high winds are part of life in North Texas. A few simple steps now make a big difference after a storm.</p>
 </div>
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"></circle><path d="m10.8 12.2 8.7-8.7"></path><path d="m17 6 2 2"></path><path d="m14.5 8.5 2 2"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Personal property</h3>
-<p style="margin: 0; color: #3E4A57">Replaces furniture, electronics, clothes and other belongings if they're damaged or stolen.</p>
+<div style="flex: 1.3 1 480px; min-width: 0"><div style="display: flex; gap: 20px; padding: 26px 0; border-top: 1px solid #24405F">
+<span style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #DDBF96; color: #DDBF96; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px">1</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Know your wind &amp; hail deductible</h3><p style="margin: 0; color: #C9D2DD">Many Texas policies have a separate deductible for wind and hail, often a percentage of your home's insured value. We'll show you the real dollar amount.</p></div></div><div style="display: flex; gap: 20px; padding: 26px 0; border-top: 1px solid #24405F">
+<span style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #DDBF96; color: #DDBF96; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px">2</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Document your belongings</h3><p style="margin: 0; color: #C9D2DD">A quick video walk-through of each room makes a personal property claim much easier.</p></div></div><div style="display: flex; gap: 20px; padding: 26px 0; border-top: 1px solid #24405F">
+<span style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #DDBF96; color: #DDBF96; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px">3</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600">Check your roof</h3><p style="margin: 0; color: #C9D2DD">An older roof can change how a claim is paid. Ask us how your policy treats roof damage.</p></div></div></div>
 </div>
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Personal liability</h3>
-<p style="margin: 0; color: #3E4A57">Protects you if someone is hurt on your property or you accidentally damage someone else's.</p>
-</div>
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18V6"></path><path d="M2 12h20v6"></path><path d="M6 12V9h6v3"></path><path d="M22 18v-4a2 2 0 0 0-2-2"></path></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Loss of use</h3>
-<p style="margin: 0; color: #3E4A57">Helps pay for a hotel and extra living costs if you can't live at home during repairs.</p>
-</div>
-<div class="lift" style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
-<span style="width: 54px; height: 54px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path><rect x="3" y="3" width="18" height="18" rx="3"></rect></svg></span>
-<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600">Medical payments</h3>
-<p style="margin: 0; color: #3E4A57">Pays small medical bills for guests injured at your home, regardless of fault.</p>
-</div>
-</div>
+</section>
+<section style="background: #ffffff">
+<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 14px"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Not a homeowner?</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">We cover <span style="font-style: italic; color: #8A6440">every kind of home</span></h2></div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px"><a href="quote.html" class="lift" style="flex: 1 1 240px; min-width: 0; text-decoration: none; color: #0B1F35; background: #FBF8F3; border: 1px solid #ECE3D5; border-radius: 20px; padding: 22px 24px; display: flex; gap: 14px; align-items: center">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"></circle><path d="m10.8 12.2 8.7-8.7"></path><path d="m17 6 2 2"></path><path d="m14.5 8.5 2 2"></path></svg></span><span style="display: flex; flex-direction: column"><strong style="font-family: 'Playfair Display', serif; font-size: 19px">Renters</strong><span style="font-size: 14px; color: #3E4A57">Protect your belongings and liability in an apartment or rental home.</span></span></a><a href="quote.html" class="lift" style="flex: 1 1 240px; min-width: 0; text-decoration: none; color: #0B1F35; background: #FBF8F3; border: 1px solid #ECE3D5; border-radius: 20px; padding: 22px 24px; display: flex; gap: 14px; align-items: center">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 5 3h14l2 6"></path><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"></path><path d="M5 13v8h14v-8"></path></svg></span><span style="display: flex; flex-direction: column"><strong style="font-family: 'Playfair Display', serif; font-size: 19px">Condo</strong><span style="font-size: 14px; color: #3E4A57">Coverage for your unit, upgrades and belongings inside the building.</span></span></a><a href="quote.html" class="lift" style="flex: 1 1 240px; min-width: 0; text-decoration: none; color: #0B1F35; background: #FBF8F3; border: 1px solid #ECE3D5; border-radius: 20px; padding: 22px 24px; display: flex; gap: 14px; align-items: center">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column"><strong style="font-family: 'Playfair Display', serif; font-size: 19px">Landlord</strong><span style="font-size: 14px; color: #3E4A57">Coverage for a home or unit you rent out to others.</span></span></a><a href="quote.html" class="lift" style="flex: 1 1 240px; min-width: 0; text-decoration: none; color: #0B1F35; background: #FBF8F3; border: 1px solid #ECE3D5; border-radius: 20px; padding: 22px 24px; display: flex; gap: 14px; align-items: center">
+<span style="flex: none; color: #8A6440"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s7 7.3 7 12.3a7 7 0 0 1-14 0c0-5 7-12.3 7-12.3z"></path></svg></span><span style="display: flex; flex-direction: column"><strong style="font-family: 'Playfair Display', serif; font-size: 19px">Flood</strong><span style="font-size: 14px; color: #3E4A57">Standard home policies usually exclude flooding. A separate policy can cover it.</span></span></a></div>
 </div>
 </section>
 <section style="background: #F6F1E8">
-<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-wrap: wrap; flex-direction: row; gap: 64px; align-items: center">
-<div style="flex: 1 1 440px; min-width: 0; border-radius: 22px; overflow: hidden" class="lift"><div aria-hidden="true" class="ph" style="aspect-ratio: 5 / 4; background: radial-gradient(circle at 78% 22%, rgba(221, 191, 150, 0.38), rgba(221, 191, 150, 0) 52%), linear-gradient(140deg, #183A5E 0%, #0B1F35 72%); display: flex; align-items: center; justify-content: center; padding: 16px"><img src="logo-light.svg" alt="" style="width: 34%; max-width: 190px; opacity: 0.2"></div></div>
-<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Ready for storm season</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Coverage that holds up to <span style="font-style: italic; color: #8A6440">Texas weather</span></h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">Hail, wind and heavy storms are part of life in North Texas. We'll explain your deductibles before you need them, so there are no surprises after a storm.</p>
-<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px"><li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #0B1F35; display: flex; align-items: center; justify-content: center; margin-top: 2px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DDBF96" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="color: #24364A; font-size: 17px">Clear explanation of wind and hail deductibles</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #0B1F35; display: flex; align-items: center; justify-content: center; margin-top: 2px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DDBF96" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="color: #24364A; font-size: 17px">Options to bundle with auto</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #0B1F35; display: flex; align-items: center; justify-content: center; margin-top: 2px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DDBF96" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="color: #24364A; font-size: 17px">Coverage for valuables like jewelry</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #0B1F35; display: flex; align-items: center; justify-content: center; margin-top: 2px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DDBF96" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="color: #24364A; font-size: 17px">Help getting a claim started after storm damage</span></li></ul>
-<div style="padding-top: 6px"><a href="quote.html" class="btn" style="text-decoration: none; background: #0B1F35; color: #F6F1E8; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; min-height: 52px; display: inline-flex; align-items: center; gap: 8px">Start a quote <span aria-hidden="true" style="color: #DDBF96">→</span></a></div>
-</div>
-</div>
-</section>
-
-<section style="background: #FBF8F3">
 <div class="reveal" style="max-width: 920px; margin: 0 auto; padding: 110px 24px; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Questions</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Homeowners insurance questions</h2></div>
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Questions</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">Home insurance questions</h2></div>
 <div style="display: flex; flex-direction: column; border-top: 1px solid #E4DACB">
 <details style="border-bottom: 1px solid #E4DACB; padding: 24px 4px">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">Is flood damage covered?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
 <p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Standard homeowners policies usually don't cover flooding. A separate flood policy can, and we can help you look at that option.</p>
 </details>
 <details style="border-bottom: 1px solid #E4DACB; padding: 24px 4px">
-<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">What is a wind and hail deductible?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
-<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Some Texas policies have a separate deductible for wind and hail, often a percentage of your home's insured value. We'll show you exactly what yours would be.</p>
-</details>
-<details style="border-bottom: 1px solid #E4DACB; padding: 24px 4px">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">How much coverage do I need for my house?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
-<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Enough to rebuild your home at today's construction costs, which can differ from its market value. We'll help you estimate it.</p>
+<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Enough to rebuild your home at today's construction costs, which can be different from its market value. We'll help you estimate it.</p>
 </details>
 <details style="border-bottom: 1px solid #E4DACB; padding: 24px 4px">
-<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">Do you insure renters and condo owners?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
-<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Yes. Renters and condo policies protect your belongings and liability for much less than a full homeowners policy.</p>
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">Does my policy cover my jewelry?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
+<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Standard policies have limits for valuables like jewelry. You can add extra coverage for high-value items.</p>
 </details>
-</div>
-</div>
-</section>
-<section style="background: #F6F1E8">
-<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 110px; display: flex; flex-direction: column; gap: 32px">
-<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Explore more coverage</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px">
-<a href="auto.html" class="lift" style="text-decoration: none; background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 28px; display: flex; gap: 18px; align-items: center; min-width: 0">
-<span style="flex: none; width: 54px; height: 54px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-5l2-5h11l4 5h1a1 1 0 0 1 1 1v4h-2"></path><circle cx="7.5" cy="17.5" r="2"></circle><circle cx="16.5" cy="17.5" r="2"></circle><path d="M9.5 17.5h5"></path></svg></span>
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #0B1F35">Auto →</span><span style="color: #3E4A57; font-size: 15px">Cars, trucks and teen drivers</span></span>
-</a>
-<a href="life.html" class="lift" style="text-decoration: none; background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 28px; display: flex; gap: 18px; align-items: center; min-width: 0">
-<span style="flex: none; width: 54px; height: 54px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #0B1F35">Life →</span><span style="color: #3E4A57; font-size: 15px">Protection for the people you love</span></span>
-</a>
-<a href="business.html" class="lift" style="text-decoration: none; background: #ffffff; border: 1px solid #ECE3D5; border-radius: 20px; padding: 28px; display: flex; gap: 18px; align-items: center; min-width: 0">
-<span style="flex: none; width: 54px; height: 54px; border-radius: 50%; background: #0B1F35; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span>
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #0B1F35">Business →</span><span style="color: #3E4A57; font-size: 15px">Coverage for local businesses</span></span>
-</a>
+<details style="border-bottom: 1px solid #E4DACB; padding: 24px 4px">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; min-height: 44px">Can I bundle my home and auto?<span aria-hidden="true" style="color: #8A6440; font-size: 26px; font-family: 'DM Sans', sans-serif">+</span></summary>
+<p style="margin: 12px 0 0; color: #3E4A57; font-size: 17px">Yes. Bundling often lowers your total cost, and you'll have one agent for both.</p>
+</details>
 </div>
 </div>
 </section>

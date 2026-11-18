@@ -52,8 +52,24 @@ details summary::-webkit-details-marker{display:none}
 .navlink{position:relative}
 .navlink::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#B08D66;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .navlink:hover::after,.navlink.on::after{transform:scaleX(1)}
+@keyframes nd-road{from{background-position:0 0}to{background-position:240px 0}}
+@keyframes nd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes nd-glow{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes nd-rain{from{background-position:0 0}to{background-position:-80px 320px}}
+.road{background-image:repeating-linear-gradient(115deg,rgba(221,191,150,0) 0 70px,rgba(221,191,150,.16) 70px 72px,rgba(221,191,150,0) 72px 120px);animation:nd-road 6s linear infinite}
+.float{animation:nd-float 6s ease-in-out infinite}
+.fade-in.float{animation:nd-fade .9s cubic-bezier(.2,.7,.2,1) forwards,nd-float 6s ease-in-out 1.2s infinite}
+.glow{animation:nd-glow 7s ease-in-out infinite}
+.rain{background-image:repeating-linear-gradient(105deg,rgba(221,191,150,0) 0 38px,rgba(221,191,150,.22) 38px 39px,rgba(221,191,150,0) 39px 80px);background-size:80px 320px;animation:nd-rain 2.4s linear infinite}
+.grid-bg{background-image:linear-gradient(rgba(221,191,150,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(221,191,150,.09) 1px,transparent 1px);background-size:56px 56px}
+.row-hover{transition:background-color .25s ease}
+.row-hover:hover{background-color:rgba(221,191,150,.08)}
+details.ind summary .ind-plus{transition:transform .3s ease}
+details.ind[open] summary .ind-plus{transform:rotate(45deg)}
+details.ind{transition:box-shadow .3s ease}
+details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 @supports (animation-timeline: view()){.reveal{animation:nd-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
-@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal{animation:none !important;opacity:1 !important;transform:none !important}}
+@media (prefers-reduced-motion: reduce){.kb,.w,.fade-in,.shine::after,.reveal,.road,.float,.glow,.rain{animation:none !important;opacity:1 !important;transform:none !important}}
 
 @media (max-width: 720px){header{position:static !important}}
 </style>
@@ -63,7 +79,7 @@ details summary::-webkit-details-marker{display:none}
 <div style="background: #0B1F35; color: #D9CDB8; font-size: 13.5px">
 <div style="max-width: 1240px; margin: 0 auto; padding: 9px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px">
 <span>Licensed in Texas · Serving Allen &amp; North Texas</span>
-<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Speaks English &amp; Arabic</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 20px"><span>Mon–Fri 9 AM – 6 PM · Sat 10 AM – 2 PM</span><a href="tel:+19725550147" style="color: #DDBF96; text-decoration: none; font-weight: 600">Call (972) 555-0147</a></span>
 </div>
 </div>
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 232, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4DACB">
@@ -80,18 +96,14 @@ details summary::-webkit-details-marker{display:none}
 </div>
 </nav>
 </header>
-<section style="position: relative; background: #2B3A4A; overflow: hidden">
-<div aria-hidden="true" class="kb" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: radial-gradient(ellipse at 82% 30%, rgba(221, 191, 150, 0.30), rgba(221, 191, 150, 0) 50%), radial-gradient(ellipse at 10% 100%, rgba(27, 63, 99, 0.9), rgba(27, 63, 99, 0) 60%), linear-gradient(135deg, #0B1F35 0%, #13304F 55%, #0B1F35 100%); display: flex; align-items: center; justify-content: center; padding: 26px"><img src="logo-light.svg" alt="" style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 36%; max-width: 560px; opacity: 0.08"></div>
-<div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(90deg, rgba(7, 21, 38, 0.94) 0%, rgba(11, 31, 53, 0.8) 48%, rgba(11, 31, 53, 0.25) 100%)"></div>
-<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px 110px; min-height: 560px; display: flex; flex-direction: column; justify-content: center; gap: 24px">
-<p class="fade-in" style="margin: 0; font-size: 14px; color: #C9D2DD"><a href="index.html" style="color: #C9D2DD">Home</a> <span aria-hidden="true" style="color: #DDBF96; padding: 0 6px">/</span> About</p>
-<p class="fade-in" style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #DDBF96; animation-delay: .1s">About N&amp;D Insurance</p>
-<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(42px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -1.4px; color: #F6F1E8; max-width: 780px"><span class="w" style="animation-delay: 0.15s">A</span> <span class="w" style="animation-delay: 0.24s">local</span> <span class="w" style="animation-delay: 0.33s">agency</span> <span class="w" style="animation-delay: 0.42s">that</span> <span class="w" style="animation-delay: 0.51s">knows</span> <span class="w" style="animation-delay: 0.60s">you</span> <span class="w" style="animation-delay: 0.69s">by</span> <span class="w" style="animation-delay: 0.78s; font-style: italic; color: #DDBF96">name.</span></h1>
-<p class="fade-in" style="margin: 0; font-size: 19px; line-height: 1.65; color: #D5DCE5; max-width: 600px; animation-delay: .6s">N&amp;D Insurance was built on a simple idea: insurance should feel personal. We take the time to explain your options and we're here when you need us.</p>
-<div class="fade-in" style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px; animation-delay: .8s">
-<a href="quote.html" class="shine btn" style="text-decoration: none; background: linear-gradient(135deg, #E3C9A2 0%, #B08D66 50%, #8A6440 100%); color: #0B1F35; font-weight: 700; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25)">Get my free quote <span aria-hidden="true">→</span></a>
-<a href="tel:+19725550147" class="btn" style="text-decoration: none; border: 1.5px solid #F6F1E8; color: #F6F1E8; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 999px; min-height: 56px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg> Talk to an agent</a>
+<section style="background: #F6F1E8; border-bottom: 1px solid #E4DACB">
+<div style="max-width: 1240px; margin: 0 auto; padding: 90px 24px 80px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p class="fade-in" style="margin: 0; font-size: 14px; color: #3E4A57"><a href="index.html" style="color: #3E4A57">Home</a> <span aria-hidden="true" style="color: #8A6440; padding: 0 6px">/</span> About</p>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">About N&amp;D Insurance</p>
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(48px, 7vw, 104px); line-height: 0.98; letter-spacing: -2px; color: #0B1F35"><span class="w" style="animation-delay: 0.15s">A</span> <span class="w" style="animation-delay: 0.24s">local</span> <span class="w" style="animation-delay: 0.33s">agency</span> <span class="w" style="animation-delay: 0.42s">that</span> <span class="w" style="animation-delay: 0.51s">knows</span> <span class="w" style="animation-delay: 0.60s">you</span> <span class="w" style="animation-delay: 0.69s">by</span> <span class="w" style="animation-delay: 0.78s; font-style: italic; color: #8A6440">name.</span></h1>
 </div>
+<p class="fade-in" style="flex: 0 1 380px; margin: 0; font-size: 19px; line-height: 1.7; color: #3E4A57; padding-left: 24px; border-left: 2px solid #B08D66; animation-delay: .7s">N&amp;D Insurance was built on a simple idea: insurance should feel personal. We take the time to understand you, and we're here when you need us.</p>
 </div>
 </section>
 <section style="background: #F6F1E8">
@@ -102,11 +114,11 @@ details summary::-webkit-details-marker{display:none}
 </div>
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
 <p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #8A6440">Meet your agent</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #0B1F35">David Nader <span style="font-style: italic; color: #8A6440">Aboudkhil</span></h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">Nader started N&amp;D Insurance with one goal: to give North Texas families and business owners the kind of personal service that's hard to find anymore. He believes insurance shouldn't be confusing, so he takes the time to explain every option in plain language and makes sure each client knows exactly what they're covered for.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">Nader started N&amp;D Insurance with one goal: to give North Texas families and business owners the kind of personal service that's hard to find anymore. He believes insurance shouldn't be confusing, so he takes the time to walk through every option and makes sure each client knows exactly what they're covered for.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E4A57">When you call N&amp;D, you reach someone who knows you. Whether it's a new quote, a question about your policy, or help after an accident, Nader and his team are here to make it simple.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px">
 <span style="border: 1px solid #D8C9B2; border-radius: 999px; padding: 8px 18px; font-size: 14px; color: #24364A; background: #FBF8F3">Licensed Texas agent</span>
-<span style="border: 1px solid #D8C9B2; border-radius: 999px; padding: 8px 18px; font-size: 14px; color: #24364A; background: #FBF8F3">Speaks English &amp; Arabic</span>
+<span style="border: 1px solid #D8C9B2; border-radius: 999px; padding: 8px 18px; font-size: 14px; color: #24364A; background: #FBF8F3">Serving Allen &amp; North Texas</span>
 </div>
 <p style="margin: 8px 0 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px">Nader</p>
 <p style="margin: -14px 0 0; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: #8A6440; font-weight: 600">Agency owner</p>
@@ -116,7 +128,7 @@ details summary::-webkit-details-marker{display:none}
 <section style="background: #0B1F35; color: #F6F1E8">
 <div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 110px 24px; display: flex; flex-direction: column; gap: 48px">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px"><p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #DDBF96">What we stand for</p><h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -1px; color: #F6F1E8">Three promises to <span style="font-style: italic; color: #DDBF96">every client</span></h2></div>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0 48px"><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">01</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Honesty</h3><p style="margin: 0; color: #C9D2DD">We explain what you're buying in plain words, including what isn't covered.</p></div><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">02</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Availability</h3><p style="margin: 0; color: #C9D2DD">A real person answers, and we follow up when we say we will.</p></div><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">03</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Community</h3><p style="margin: 0; color: #C9D2DD">We live and work here, and we're proud to support our neighbors.</p></div></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0 48px"><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">01</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Honesty</h3><p style="margin: 0; color: #C9D2DD">We tell you exactly what you're buying, including what isn't covered.</p></div><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">02</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Availability</h3><p style="margin: 0; color: #C9D2DD">A real person answers, and we follow up when we say we will.</p></div><div style="display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-top: 1px solid #24405F"><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; line-height: 1; color: #DDBF96">03</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600">Community</h3><p style="margin: 0; color: #C9D2DD">We live and work here, and we're proud to support our neighbors.</p></div></div>
 </div>
 </section>
 
