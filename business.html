@@ -62,6 +62,8 @@ details summary::-webkit-details-marker{display:none}
 .glow{animation:nd-glow 7s ease-in-out infinite}
 .rain{background-image:repeating-linear-gradient(105deg,rgba(221,191,150,0) 0 38px,rgba(221,191,150,.22) 38px 39px,rgba(221,191,150,0) 39px 80px);background-size:80px 320px;animation:nd-rain 2.4s linear infinite}
 .grid-bg{background-image:linear-gradient(rgba(221,191,150,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(221,191,150,.09) 1px,transparent 1px);background-size:56px 56px}
+.toc{transition:color .2s ease,border-color .2s ease}
+.toc:hover{color:#0B1F35 !important;border-left-color:#B08D66 !important}
 .row-hover{transition:background-color .25s ease}
 .row-hover:hover{background-color:rgba(221,191,150,.08)}
 details.ind summary .ind-plus{transition:transform .3s ease}
@@ -202,13 +204,14 @@ details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 </section>
 <footer style="background: #071526; color: #9AA9BA">
 <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 40px; display: flex; flex-direction: column; gap: 36px">
-<div style="display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between">
-<div style="display: flex; flex-direction: column; gap: 18px; max-width: 320px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px 44px; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 260px">
 <img src="logo-light.svg" alt="N&amp;D Insurance" style="width: 150px; height: auto; display: block">
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9AA9BA">Personal insurance service from a local Texas agent.</p>
 </div>
-<div style="display: flex; flex-direction: column; gap: 10px; min-width: 160px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Coverage</span><a href="auto.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Auto</a><a href="homeowners.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Homeowners</a><a href="life.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Life</a><a href="business.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Business</a></div>
-<div style="display: flex; flex-direction: column; gap: 10px; min-width: 160px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Agency</span><a href="about.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">About</a><a href="contact.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Contact</a><a href="quote.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Get a quote</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Coverage</span><a href="auto.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Auto</a><a href="homeowners.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Homeowners</a><a href="life.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Life</a><a href="business.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Business</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Agency</span><a href="about.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">About</a><a href="contact.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Contact</a><a href="quote.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Get a quote</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Legal</span><a href="privacy.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Privacy Policy</a><a href="terms.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Terms of Service</a><a href="data.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">How we handle your data</a></div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 200px">
 <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Visit</span>
 <span style="font-size: 15px; color: #D9CDB8">100 Main Street, Suite 200<br>Allen, TX 75013</span>
@@ -264,7 +267,7 @@ document.querySelectorAll('[data-quote]').forEach(function (card) {
     else if (action === 'back') show(1);
     else if (action === 'restart') {
       chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.opt === 'Auto' ? 'true' : 'false'); });
-      card.querySelectorAll('input').forEach(function (i) { i.value = ''; });
+      card.querySelectorAll('input').forEach(function (i) { if (i.type === 'checkbox') i.checked = false; else i.value = ''; });
       show(1);
     }
   });
@@ -275,7 +278,7 @@ document.querySelectorAll('[data-quote]').forEach(function (card) {
       if (!required[i].reportValidity()) return;
     }
     const data = { coverage: picked().join(', ') };
-    card.querySelectorAll('input[name]').forEach(function (i) { data[i.name] = i.value; });
+    card.querySelectorAll('input[name]').forEach(function (i) { data[i.name] = i.type === 'checkbox' ? i.checked : i.value; });
     if (QUOTE_ENDPOINT) {
       fetch(QUOTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
         .catch(function () {});
