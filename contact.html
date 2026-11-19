@@ -57,7 +57,7 @@ details summary::-webkit-details-marker{display:none}
 @keyframes nd-glow{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 @keyframes nd-rain{from{background-position:0 0}to{background-position:-80px 320px}}
 .road{background-image:repeating-linear-gradient(115deg,rgba(221,191,150,0) 0 70px,rgba(221,191,150,.16) 70px 72px,rgba(221,191,150,0) 72px 120px);animation:nd-road 6s linear infinite}
-.float{animation:nd-float 6s ease-in-out infinite}
+.float{animation:nd-float 6s ease-in-out infinite;will-change:transform}
 .fade-in.float{animation:nd-fade .9s cubic-bezier(.2,.7,.2,1) forwards,nd-float 6s ease-in-out 1.2s infinite}
 .glow{animation:nd-glow 7s ease-in-out infinite}
 .rain{background-image:repeating-linear-gradient(105deg,rgba(221,191,150,0) 0 38px,rgba(221,191,150,.22) 38px 39px,rgba(221,191,150,0) 39px 80px);background-size:80px 320px;animation:nd-rain 2.4s linear infinite}
