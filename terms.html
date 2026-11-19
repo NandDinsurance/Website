@@ -64,6 +64,10 @@ details summary::-webkit-details-marker{display:none}
 .grid-bg{background-image:linear-gradient(rgba(221,191,150,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(221,191,150,.09) 1px,transparent 1px);background-size:56px 56px}
 .toc{transition:color .2s ease,border-color .2s ease}
 .toc:hover{color:#0B1F35 !important;border-left-color:#B08D66 !important}
+.dd-menu{opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:none}
+.dd-item{transition:background-color .2s ease}
+.dd-item:hover{background-color:#F6F1E8}
 .row-hover{transition:background-color .25s ease}
 .row-hover:hover{background-color:rgba(221,191,150,.08)}
 details.ind summary .ind-plus{transition:transform .3s ease}
@@ -87,12 +91,25 @@ details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 232, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4DACB">
 <nav style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
 <a href="index.html" aria-label="N&amp;D Insurance home" style="display: flex; align-items: center"><img src="logo-dark.svg" alt="N&amp;D Insurance" style="height: 66px; width: auto; display: block"></a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; font-size: 15px">
-<a href="auto.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Auto</a>
-<a href="homeowners.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Homeowners</a>
-<a href="life.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Life</a>
-<a href="business.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Business</a>
-<a href="specialty.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Specialty</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 15px">
+<div class="dd" style="position: relative">
+<button type="button" class="navlink" aria-haspopup="true" style="background: none; border: 0; padding: 0; cursor: pointer; color: #24364A; font-weight: 500; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px">Coverage <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8A6440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div class="dd-menu" style="position: absolute; top: 100%; left: -18px; padding-top: 10px; z-index: 60">
+<div style="background: #ffffff; border: 1px solid #ECE3D5; border-radius: 18px; padding: 8px; min-width: 240px; box-shadow: 0 24px 50px rgba(11, 31, 53, 0.16); display: flex; flex-direction: column"><a href="auto.html" class="dd-item" style="text-decoration: none; color: #0B1F35; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; min-height: 44px">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-5l2-5h11l4 5h1a1 1 0 0 1 1 1v4h-2"></path><circle cx="7.5" cy="17.5" r="2"></circle><circle cx="16.5" cy="17.5" r="2"></circle><path d="M9.5 17.5h5"></path></svg></span>
+<span style="font-weight: 600">Auto</span></a><a href="homeowners.html" class="dd-item" style="text-decoration: none; color: #0B1F35; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; min-height: 44px">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9v12h14V9"></path><path d="M10 21v-6h4v6"></path></svg></span>
+<span style="font-weight: 600">Homeowners</span></a><a href="life.html" class="dd-item" style="text-decoration: none; color: #0B1F35; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; min-height: 44px">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
+<span style="font-weight: 600">Life</span></a><a href="commercial.html" class="dd-item" style="text-decoration: none; color: #0B1F35; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; min-height: 44px">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span>
+<span style="font-weight: 600">Commercial</span></a><a href="specialty.html" class="dd-item" style="text-decoration: none; color: #0B1F35; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; min-height: 44px">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F3EADC; color: #8A6440; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"></path><path d="M4 15 3 11h18l-2.5 4"></path><path d="M12 11V3l5 5.5h-5"></path></svg></span>
+<span style="font-weight: 600">Specialty</span></a></div>
+</div>
+</div>
+<a href="policy-checkup.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Policy Checkup</a>
+<a href="client-services.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Client Services</a>
 <a href="about.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">About</a>
 <a href="contact.html" class="navlink" style="text-decoration: none; color: #24364A; font-weight: 500">Contact</a>
 <a href="quote.html" class="btn" style="text-decoration: none; background: #0B1F35; color: #F6F1E8; font-weight: 600; padding: 12px 22px; border-radius: 999px; min-height: 46px; display: inline-flex; align-items: center; gap: 8px">Get a free quote <span aria-hidden="true" style="color: #DDBF96">→</span></a>
@@ -168,8 +185,8 @@ details.ind[open]{box-shadow:0 18px 40px rgba(11,31,53,.08)}
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9AA9BA">Personal insurance service from a local Texas agent.</p>
 <div style="display: flex; gap: 10px; padding-top: 6px"><a href="https://www.facebook.com/" aria-label="N&amp;D Insurance on Facebook" class="btn" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #2C4A6B; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z" fill="currentColor" stroke="none"></path></svg></a><a href="https://www.instagram.com/" aria-label="N&amp;D Insurance on Instagram" class="btn" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #2C4A6B; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg></a><a href="https://www.linkedin.com/" aria-label="N&amp;D Insurance on LinkedIn" class="btn" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #2C4A6B; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h3.5v11H4zM5.75 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h3.4v1.6c.5-.9 1.7-1.9 3.6-1.9 3.6 0 4 2.3 4 5.3V20h-3.5v-5.3c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H10z" fill="currentColor" stroke="none"></path></svg></a><a href="https://x.com/" aria-label="N&amp;D Insurance on X" class="btn" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #2C4A6B; color: #DDBF96; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20" stroke-width="2.2"></path></svg></a></div>
 </div>
-<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Coverage</span><a href="auto.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Auto</a><a href="homeowners.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Homeowners</a><a href="life.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Life</a><a href="business.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Business</a><a href="specialty.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Specialty</a></div>
-<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Agency</span><a href="about.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">About</a><a href="contact.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Contact</a><a href="quote.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Get a quote</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Coverage</span><a href="auto.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Auto</a><a href="homeowners.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Homeowners</a><a href="life.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Life</a><a href="commercial.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Commercial</a><a href="specialty.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Specialty</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Agency</span><a href="about.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">About</a><a href="policy-checkup.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Policy Checkup</a><a href="client-services.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Client Services</a><a href="careers.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Careers</a><a href="contact.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Contact</a><a href="quote.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Get a quote</a></div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 130px"><span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Legal</span><a href="privacy.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Privacy Policy</a><a href="terms.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">Terms of Service</a><a href="data.html" style="color: #D9CDB8; text-decoration: none; font-size: 15px">How we handle your data</a></div>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 200px">
 <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #DDBF96; font-weight: 600">Visit</span>
@@ -246,6 +263,22 @@ document.querySelectorAll('[data-quote]').forEach(function (card) {
     show(3);
   }
   show(1);
+});
+
+// ---- Other forms (contact, careers, checkup, client services) ----
+document.querySelectorAll('form[data-form]').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = data[k] ? data[k] + ', ' + v : v; });
+    data.page = document.title;
+    if (QUOTE_ENDPOINT) {
+      fetch(QUOTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }).catch(function () {});
+    }
+    const ok = form.parentElement.querySelector('[data-success]');
+    if (ok) { form.hidden = true; ok.hidden = false; }
+    else { form.innerHTML = '<p style="margin:0;font-size:20px;font-family:\'Playfair Display\',serif">Thank you! We\'ll be in touch soon.</p>'; }
+  });
 });
 
 // ---- Scroll reveal fallback (Safari / Firefox) ----
